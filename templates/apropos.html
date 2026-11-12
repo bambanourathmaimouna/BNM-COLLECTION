@@ -1,0 +1,134 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>À propos | BNM COLLECTION</title>
+
+    <link rel="stylesheet" href="{% static 'css/apropos.css' %}">
+</head>
+
+<body class="page-apropos">
+
+    <header class="apropos-header">
+        <a href="{% url 'accueil' %}" class="logo">
+            BNM <span>COLLECTION</span>
+        </a>
+
+        <nav>
+            <a href="{% url 'accueil' %}">Accueil</a>
+            <a href="{% url 'boutique' %}">Boutique</a>
+            <a href="{% url 'suivre_commande' %}">Suivre ma commande</a>
+            <a href="{% url 'contact' %}">Contact</a>
+            <a href="{% url 'panier' %}">Mon panier</a>
+        </nav>
+    </header>
+
+    <main>
+
+        <section class="apropos-hero">
+            <span>BIENVENUE DANS NOTRE UNIVERS</span>
+            <h1>À propos de BNM COLLECTION</h1>
+            <p>
+                L'élégance dans la simplicité.
+            </p>
+        </section>
+
+        <section class="apropos-section">
+            <div class="apropos-card">
+                <span class="petit-titre">NOTRE HISTOIRE</span>
+                <h2>Une passion pour l'élégance</h2>
+
+                <p>
+                    BNM COLLECTION est une boutique de mode dédiée aux femmes
+                    et aux petites filles qui aiment s'habiller avec élégance,
+                    simplicité et raffinement.
+                </p>
+
+                <p>
+                    Notre boutique propose une sélection de vêtements et
+                    d'accessoires qui associent pudeur, confort et beauté.
+                    Nous souhaitons permettre à chaque cliente de trouver
+                    des tenues dans lesquelles elle se sent belle et
+                    à l'aise.
+                </p>
+            </div>
+        </section>
+
+        <section class="mission-section">
+            <span class="petit-titre">NOTRE MISSION</span>
+            <h2>Vous accompagner avec élégance</h2>
+
+            <p>
+                Notre mission est de rendre la mode pudique accessible
+                en proposant des articles soigneusement sélectionnés
+                pour répondre aux envies et aux besoins de nos clientes.
+            </p>
+        </section>
+
+        <section class="valeurs-section">
+            <span class="petit-titre">CE QUI NOUS GUIDE</span>
+            <h2>Nos valeurs</h2>
+
+            <div class="valeurs-grid">
+
+                <div class="valeur-card">
+                    <span>✦</span>
+                    <h3>Élégance</h3>
+                    <p>
+                        Des tenues raffinées pour valoriser votre style.
+                    </p>
+                </div>
+
+                <div class="valeur-card">
+                    <span>♡</span>
+                    <h3>Confort</h3>
+                    <p>
+                        Des vêtements pensés pour vous sentir à l'aise.
+                    </p>
+                </div>
+
+                <div class="valeur-card">
+                    <span>✧</span>
+                    <h3>Qualité</h3>
+                    <p>
+                        Une sélection attentive de nos articles.
+                    </p>
+                </div>
+
+                <div class="valeur-card">
+                    <span>❀</span>
+                    <h3>Satisfaction</h3>
+                    <p>
+                        Une attention particulière portée à chaque cliente.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="collections-section">
+            <span class="petit-titre">NOS COLLECTIONS</span>
+            <h2>Pour toutes les envies</h2>
+
+            <p>
+                Retrouvez nos hijabs, voiles, abayas, robes longues,
+                ensembles pour femmes et tenues pour petites filles.
+            </p>
+
+            <a href="{% url 'boutique' %}" class="boutique-button">
+                Découvrir notre boutique
+            </a>
+        </section>
+
+    </main>
+
+    <footer class="apropos-footer">
+        <p>© 2026 BNM COLLECTION — L'élégance dans la simplicité.</p>
+    </footer>
+
+</body>
+</html>

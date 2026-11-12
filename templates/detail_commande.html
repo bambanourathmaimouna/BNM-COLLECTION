@@ -1,0 +1,149 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Détail commande #{{ commande.id }} | BNM COLLECTION</title>
+
+    <link rel="stylesheet" href="{% static 'css/detail_commande.css' %}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <header>
+        <h1>BNM <span>COLLECTION</span></h1>
+        <p>Gestion des commandes</p>
+    </header>
+
+    <a href="{% url 'tableau_de_bord' %}" class="retour">
+        ← Retour au tableau de bord
+    </a>
+
+    <a href="{% url 'contact' %}">Contact</a>
+
+    <div class="card">
+
+        <h2>Commande #{{ commande.id }}</h2>
+
+        {% if messages %}
+            {% for message in messages %}
+                <div class="message">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+
+        <h3>Informations de la cliente</h3>
+
+        <div class="info">
+            <span>Nom :</span>
+            <strong>{{ commande.nom_client }}</strong>
+        </div>
+
+        <div class="info">
+            <span>Téléphone :</span>
+            <strong>{{ commande.telephone }}</strong>
+        </div>
+
+        <div class="info">
+            <span>Email :</span>
+            <strong>{{ commande.email|default:"Non renseigné" }}</strong>
+        </div>
+
+        <div class="info">
+            <span>Adresse :</span>
+            <strong>{{ commande.adresse }}</strong>
+        </div>
+
+        <div class="info">
+            <span>Ville :</span>
+            <strong>{{ commande.ville }}</strong>
+        </div>
+
+        <div class="info">
+            <span>Date :</span>
+            <strong>{{ commande.date_commande|date:"d/m/Y à H:i" }}</strong>
+        </div>
+
+        <hr>
+
+        <h3>Articles commandés</h3>
+
+        {% for ligne in lignes %}
+
+        <div class="article">
+
+            <div>
+                <strong>{{ ligne.article.nom }}</strong>
+                <p>Quantité : {{ ligne.quantite }}</p>
+                <p>Prix unitaire : {{ ligne.prix_unitaire }} FCFA</p>
+            </div>
+
+            <strong>
+                {{ ligne.sous_total }} FCFA
+            </strong>
+
+        </div>
+
+        {% empty %}
+
+        <p>Aucun article enregistré.</p>
+
+        {% endfor %}
+
+        <div class="total">
+            <span>Montant total :</span>
+            <strong>{{ commande.montant_total }} FCFA</strong>
+        </div>
+
+        <hr>
+
+        <h3>Paiement</h3>
+
+        <div class="info">
+            <span>Moyen de paiement :</span>
+            <strong>{{ commande.get_moyen_paiement_display }}</strong>
+        </div>
+
+        <hr>
+
+        <h3>Modifier le statut de la commande</h3>
+
+        <form method="POST" action="{% url 'modifier_statut_commande' commande.id %}">
+
+            {% csrf_token %}
+
+            <select name="statut" required>
+
+                {% for valeur, libelle in statuts %}
+
+                <option value="{{ valeur }}"
+                    {% if commande.statut == valeur %}selected{% endif %}>
+                    {{ libelle }}
+                </option>
+
+                {% endfor %}
+
+            </select>
+
+            <button type="submit">
+                Enregistrer le statut
+            </button>
+
+        </form>
+
+    </div>
+
+    <footer>
+        BNM COLLECTION © 2026
+        <p>L'élégance au quotidien.</p>
+    </footer>
+
+</div>
+
+</body>
+</html>

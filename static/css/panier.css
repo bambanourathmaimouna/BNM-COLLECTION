@@ -1,0 +1,362 @@
+/* ==============================
+   RESET GENERAL
+============================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.page-panier {
+    font-family: Arial, sans-serif;
+    background: #faf7f2;
+    color: #403126;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ==============================
+   HEADER
+============================== */
+
+.page-panier .navbar {
+    width: 100%;
+    min-height: 85px;
+    padding: 18px 7%;
+    background: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 3px 15px rgba(64, 49, 38, 0.08);
+}
+
+.page-panier .logo {
+    text-decoration: none;
+    color: #75543d;
+    font-size: 25px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.page-panier .logo span {
+    font-size: 11px;
+    letter-spacing: 5px;
+    display: block;
+    text-align: center;
+    margin-top: 4px;
+}
+
+.page-panier nav {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.page-panier nav a {
+    text-decoration: none;
+    color: #403126;
+    font-size: 14px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.page-panier nav a:hover,
+.page-panier nav a.active {
+    color: #a17b5c;
+}
+
+/* ==============================
+   CONTENU PRINCIPAL
+============================== */
+
+.page-panier .container {
+    width: 86%;
+    max-width: 1200px;
+    margin: 55px auto;
+    flex: 1;
+}
+
+.page-panier .page-title {
+    margin-bottom: 35px;
+}
+
+.page-panier .page-title h1 {
+    font-size: 35px;
+    color: #76543d;
+    margin-bottom: 12px;
+}
+
+.page-panier .page-title p {
+    color: #8a8179;
+    font-size: 15px;
+}
+
+/* ==============================
+   ORGANISATION DU PANIER
+============================== */
+
+.page-panier .cart-layout {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 35px;
+}
+
+.page-panier .cart-items {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.page-panier .cart-item {
+    background: #fff;
+    padding: 22px;
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    border-radius: 10px;
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.04);
+}
+
+.page-panier .cart-item img {
+    width: 115px;
+    height: 135px;
+    object-fit: cover;
+    border-radius: 7px;
+}
+
+.page-panier .item-info {
+    flex: 1;
+}
+
+.page-panier .item-info h2 {
+    font-size: 18px;
+    color: #403126;
+    margin-bottom: 9px;
+}
+
+.page-panier .category {
+    color: #999;
+    font-size: 13px;
+    margin-bottom: 10px;
+}
+
+.page-panier .price {
+    color: #a47a52;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.page-panier .quantity {
+    margin-top: 10px;
+    font-size: 13px;
+    color: #777;
+}
+
+.page-panier .remove-btn {
+    border: none;
+    background: none;
+    color: #b34d4d;
+    cursor: pointer;
+    margin-top: 12px;
+    font-size: 13px;
+    text-decoration: underline;
+}
+
+.page-panier .remove-btn:hover {
+    color: #842d2d;
+}
+
+.page-panier .subtotal {
+    font-weight: bold;
+    color: #76543d;
+    white-space: nowrap;
+    font-size: 16px;
+}
+
+/* ==============================
+   RÉSUMÉ DE COMMANDE
+============================== */
+
+.page-panier .cart-summary {
+    background: #fff;
+    padding: 28px;
+    border-radius: 10px;
+    height: fit-content;
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.04);
+}
+
+.page-panier .cart-summary h2 {
+    font-size: 20px;
+    color: #4b3528;
+    margin-bottom: 25px;
+}
+
+.page-panier .summary-line,
+.page-panier .total-line {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 18px;
+    font-size: 14px;
+}
+
+.page-panier .cart-summary hr {
+    border: none;
+    border-top: 1px solid #eee;
+    margin: 20px 0;
+}
+
+.page-panier .total-line {
+    font-size: 18px;
+    color: #76543d;
+    font-weight: bold;
+}
+
+/* BOUTON COMMANDE */
+
+.page-panier .checkout-btn {
+    display: block;
+    width: 100%;
+    padding: 16px;
+    background: #76543d;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    margin-top: 20px;
+    transition: 0.3s;
+}
+
+.page-panier .checkout-btn:hover {
+    background: #4b3528;
+}
+
+.page-panier .continue-link {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    color: #76543d;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.page-panier .continue-link:hover {
+    color: #a47a52;
+}
+
+/* ==============================
+   PANIER VIDE
+============================== */
+
+.page-panier .empty-cart {
+    background: #fff;
+    text-align: center;
+    padding: 75px 20px;
+    border-radius: 10px;
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.04);
+}
+
+.page-panier .empty-icon {
+    font-size: 55px;
+    margin-bottom: 20px;
+}
+
+.page-panier .empty-cart h2 {
+    color: #76543d;
+    margin-bottom: 12px;
+}
+
+.page-panier .empty-cart p {
+    color: #888;
+    margin-bottom: 25px;
+    line-height: 1.7;
+}
+
+.page-panier .shop-btn {
+    display: inline-block;
+    background: #76543d;
+    color: white;
+    padding: 14px 25px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.page-panier .shop-btn:hover {
+    background: #4b3528;
+}
+
+/* ==============================
+   FOOTER
+============================== */
+
+.page-panier footer {
+    width: 100%;
+    background: #4b3528;
+    color: white;
+    text-align: center;
+    padding: 30px 15px;
+    margin-top: auto;
+    font-size: 13px;
+}
+
+/* ==============================
+   RESPONSIVE
+============================== */
+
+@media (max-width: 800px) {
+
+    .page-panier .navbar {
+        flex-direction: column;
+        gap: 20px;
+        padding: 20px;
+    }
+
+    .page-panier nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 18px;
+    }
+
+    .page-panier .container {
+        width: 92%;
+        margin: 35px auto;
+    }
+
+    .page-panier .cart-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .page-panier .cart-item {
+        flex-wrap: wrap;
+    }
+
+    .page-panier .cart-item img {
+        width: 95px;
+        height: 115px;
+    }
+
+    .page-panier .subtotal {
+        width: 100%;
+        text-align: right;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .page-panier .page-title h1 {
+        font-size: 28px;
+    }
+
+    .page-panier .cart-item {
+        padding: 15px;
+        gap: 15px;
+    }
+
+    .page-panier .cart-summary {
+        padding: 20px;
+    }
+}

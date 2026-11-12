@@ -1,0 +1,113 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{{ article.nom }} | BNM COLLECTION</title>
+
+    <link rel="stylesheet" href="{% static 'css/detail_article.css' %}">
+</head>
+
+<body class="page-detail">
+
+    <!-- HEADER -->
+    <header class="navbar">
+
+        <a href="{% url 'accueil' %}" class="logo">
+            BNM <span>COLLECTION</span>
+        </a>
+
+        <nav>
+            <a href="{% url 'accueil' %}">Accueil</a>
+            <a href="{% url 'boutique' %}">Boutique</a>
+            <a href="{% url 'suivre_commande' %}">Suivre ma commande</a>
+            <a href="{% url 'apropos' %}">À propos</a>
+            <a href="{% url 'contact' %}">Contact</a>
+            <a href="{% url 'panier' %}" class="lien-panier">
+                Mon panier
+            </a>
+        </nav>
+
+    </header>
+
+    <!-- CONTENU PRINCIPAL -->
+    <main class="detail-container">
+
+        <a href="{% url 'boutique' %}" class="retour">
+            ← Retour à la boutique
+        </a>
+
+        <div class="detail-content">
+
+            <div class="detail-image">
+
+                {% if article.image %}
+                    <img src="{{ article.image.url }}" alt="{{ article.nom }}">
+                {% else %}
+                    <div class="image-indisponible">
+                        Image non disponible
+                    </div>
+                {% endif %}
+
+            </div>
+
+            <div class="detail-infos">
+
+                <span class="detail-categorie">
+                    {{ article.get_categorie_display }}
+                </span>
+
+                <h1>{{ article.nom }}</h1>
+
+                <p class="detail-description">
+                    {{ article.description }}
+                </p>
+
+                <p class="detail-prix">
+                    {{ article.prix }} FCFA
+                </p>
+
+                <p class="detail-stock">
+                    {% if article.stock > 0 %}
+                        Disponible en stock : {{ article.stock }}
+                    {% else %}
+                        Rupture de stock
+                    {% endif %}
+                </p>
+
+                {% if article.stock > 0 %}
+
+                    <form action="{% url 'ajouter_au_panier' article.id %}" method="POST">
+                        {% csrf_token %}
+
+                        <button type="submit" class="bouton-commande">
+                            Ajouter au panier
+                        </button>
+                    </form>
+
+                {% else %}
+
+                    <button class="bouton-commande" disabled>
+                        Indisponible
+                    </button>
+
+                {% endif %}
+
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <p>© 2026 BNM COLLECTION</p>
+        <span>L'élégance dans la simplicité.</span>
+    </footer>
+
+</body>
+</html>

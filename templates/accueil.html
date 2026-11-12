@@ -1,0 +1,99 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>BNM COLLECTION | Mode & Élégance</title>
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/accueil.css' %}">
+</head>
+
+<body>
+
+    <header class="navbar">
+
+        <div class="logo">
+            BNM <span>COLLECTION</span>
+        </div>
+
+       <nav>
+            <a href="{% url 'accueil' %}">Accueil</a>
+            <a href="{% url 'boutique' %}">Boutique</a>
+            <a href="{% url 'suivre_commande' %}">Suivre ma commande</a>
+            <a href="{% url 'apropos' %}">À propos</a>
+            <a href="{% url 'contact' %}">Contact</a>
+        </nav>
+
+        <a href="{% url 'panier' %}" class="panier">Mon panier</a>
+
+    </header>
+
+    <main>
+
+        <section class="hero">
+            <div class="hero-content">
+                <p class="sous-titre">L'ÉLÉGANCE AU FÉMININ</p>
+                <h1>
+                    Révélez votre élégance
+                    avec BNM COLLECTION
+                </h1>
+                <p class="description">
+                    Découvrez notre univers de mode modeste,
+                    pensé pour les femmes et les petites filles.
+                    Élégance, douceur et raffinement.
+                </p>
+                <a href="#boutique" class="bouton">
+                    Découvrir la collection
+                </a>
+            </div>
+        </section>
+        <section class="categories" id="boutique">
+            <p class="sous-titre">NOTRE UNIVERS</p>
+            <h2>Découvrez nos collections</h2>
+            <div class="categories-container">
+                <div class="categorie">
+                    <h3>Hijabs & Foulards</h3>
+                    <p>Élégance et douceur au quotidien.</p>
+                </div>
+                <div class="categorie">
+                    <h3>Abayas & Robes</h3>
+                    <p>La beauté de la mode modeste.</p>
+                </div>
+                <div class="categorie">
+                    <h3>Ensembles</h3>
+                    <p>Des tenues élégantes et confortables.</p>
+                </div>
+                <div class="categorie">
+                    <h3>Collection enfants</h3>
+                    <p>De jolies tenues pour les petites filles.</p>
+                </div>
+            </div>
+        </section>
+        <section class="apropos" id="apropos">
+
+            <h2>Bienvenue chez BNM COLLECTION</h2>
+
+            <p>
+                BNM COLLECTION vous propose un univers de mode
+                modeste associant élégance, qualité et raffinement.
+                Nous sélectionnons et confectionnons des vêtements
+                pour accompagner chaque femme dans son quotidien.
+            </p>
+
+        </section>
+
+    </main>
+
+    <footer id="contact">
+        <h3>BNM COLLECTION</h3>
+        <p>L'élégance dans chaque détail.</p>
+        <p>© 2026 BNM COLLECTION - Tous droits réservés.</p>
+    </footer>
+
+</body>
+</html>

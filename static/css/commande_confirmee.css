@@ -1,0 +1,254 @@
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* PAGE */
+body.page-confirmation {
+    font-family: Arial, sans-serif;
+    background: #faf7f2;
+    color: #403126;
+    min-height: 100vh;
+}
+
+/* CONTENEUR */
+.page-confirmation .confirmation-container {
+    width: 90%;
+    max-width: 750px;
+    margin: 45px auto;
+    text-align: center;
+}
+
+/* LOGO */
+.page-confirmation .logo {
+    display: inline-block;
+    color: #75543d;
+    text-decoration: none;
+    font-size: 27px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin-bottom: 40px;
+}
+
+.page-confirmation .logo span {
+    display: block;
+    font-size: 11px;
+    letter-spacing: 5px;
+    margin-top: 5px;
+}
+
+/* ICÔNE DE SUCCÈS */
+.page-confirmation .success-icon {
+    width: 75px;
+    height: 75px;
+    line-height: 75px;
+    margin: auto;
+    border-radius: 50%;
+    background: #e8f1e7;
+    color: #54835b;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+/* TITRE */
+.page-confirmation .confirmation-label {
+    display: block;
+    margin-top: 25px;
+    color: #a47a52;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 3px;
+}
+
+.page-confirmation h1 {
+    margin-top: 12px;
+    color: #4b3528;
+    font-size: 30px;
+}
+
+.page-confirmation .message {
+    margin: 15px 0 35px;
+    color: #888078;
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+/* CARTE */
+.page-confirmation .commande-card {
+    background: white;
+    padding: 35px;
+    border-radius: 12px;
+    text-align: left;
+    box-shadow: 0 5px 25px rgba(64, 49, 38, 0.06);
+}
+
+.page-confirmation .card-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.page-confirmation .card-heading h2 {
+    color: #4b3528;
+    font-size: 20px;
+}
+
+.page-confirmation .numero {
+    color: #a47a52;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+/* INFORMATIONS */
+.page-confirmation .informations {
+    display: grid;
+    gap: 20px;
+}
+
+.page-confirmation .info {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    font-size: 14px;
+}
+
+.page-confirmation .info span {
+    color: #888078;
+}
+
+.page-confirmation .info strong {
+    color: #403126;
+    text-align: right;
+}
+
+.page-confirmation .info .statut {
+    color: #a47a52;
+}
+
+/* ARTICLES */
+.page-confirmation hr {
+    border: none;
+    border-top: 1px solid #eee7df;
+    margin: 28px 0;
+}
+
+.page-confirmation .commande-card h3 {
+    color: #4b3528;
+    margin-bottom: 20px;
+}
+
+.page-confirmation .article {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    padding: 17px 0;
+    border-bottom: 1px solid #eee7df;
+}
+
+.page-confirmation .article-info strong {
+    color: #403126;
+    font-size: 14px;
+}
+
+.page-confirmation .article-info p {
+    margin-top: 7px;
+    color: #999;
+    font-size: 13px;
+}
+
+.page-confirmation .prix-article {
+    color: #76543d;
+    font-size: 14px;
+}
+
+/* TOTAL */
+.page-confirmation .total {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 2px solid #a47a52;
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.page-confirmation .total strong {
+    color: #a47a52;
+}
+
+/* BOUTON */
+.page-confirmation .bouton {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 16px 30px;
+    background: #76543d;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.page-confirmation .bouton:hover {
+    background: #4b3528;
+    transform: translateY(-2px);
+}
+
+/* FOOTER */
+.page-confirmation .confirmation-footer {
+    margin-top: 45px;
+    padding: 25px;
+    color: #76543d;
+    font-size: 13px;
+    line-height: 2;
+}
+
+.page-confirmation .confirmation-footer p {
+    font-weight: bold;
+}
+
+.page-confirmation .confirmation-footer span {
+    color: #999;
+}
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+
+    .page-confirmation .confirmation-container {
+        width: 92%;
+        margin: 25px auto;
+    }
+
+    .page-confirmation .commande-card {
+        padding: 22px;
+    }
+
+    .page-confirmation .card-heading {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .page-confirmation h1 {
+        font-size: 25px;
+    }
+
+    .page-confirmation .info {
+        flex-direction: column;
+        gap: 6px;
+    }
+
+    .page-confirmation .info strong {
+        text-align: left;
+    }
+
+    .page-confirmation .total {
+        font-size: 14px;
+    }
+}

@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supprimer un produit | BNM COLLECTION</title>
+    <link rel="stylesheet" href="{% static 'css/gestion_produits.css' %}">
+</head>
+<body>
+
+<header class="header">
+    <h1>BNM COLLECTION</h1>
+    <a href="{% url 'gestion_produits' %}">Retour aux produits</a>
+</header>
+
+<main class="form-container">
+    <h2>Supprimer ce produit ?</h2>
+
+    <p>
+        Voulez-vous vraiment supprimer
+        <strong>{{ article.nom }}</strong> ?
+    </p>
+
+    <p>Cette action est définitive.</p>
+
+    <form method="POST">
+        {% csrf_token %}
+        <button type="submit" class="btn-supprimer">
+            Oui, supprimer
+        </button>
+
+        <a href="{% url 'gestion_produits' %}" class="btn-annuler">
+            Annuler
+        </a>
+    </form>
+</main>
+
+</body>
+</html>

@@ -1,0 +1,115 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Commande confirmée | BNM COLLECTION</title>
+
+    <link rel="stylesheet" href="{% static 'css/commande_confirmee.css' %}">
+</head>
+
+<body class="page-confirmation">
+
+    <main class="confirmation-container">
+
+        <a href="{% url 'accueil' %}" class="logo">
+            BNM <span>COLLECTION</span>
+        </a>
+
+        <div class="success-icon">✓</div>
+
+        <span class="confirmation-label">COMMANDE ENREGISTRÉE</span>
+
+        <h1>Merci pour votre commande !</h1>
+
+        <p class="message">
+            Votre commande a été enregistrée avec succès.
+            Merci d'avoir choisi BNM COLLECTION.
+        </p>
+
+        <div class="commande-card">
+
+            <div class="card-heading">
+                <h2>Récapitulatif de votre commande</h2>
+                <span class="numero">N° {{ commande.id }}</span>
+            </div>
+
+            <div class="informations">
+
+                <div class="info">
+                    <span>Nom du client</span>
+                    <strong>{{ commande.nom_client }}</strong>
+                </div>
+
+                <div class="info">
+                    <span>Téléphone</span>
+                    <strong>{{ commande.telephone }}</strong>
+                </div>
+
+                <div class="info">
+                    <span>Adresse</span>
+                    <strong>{{ commande.adresse }}</strong>
+                </div>
+
+                <div class="info">
+                    <span>Ville</span>
+                    <strong>{{ commande.ville }}</strong>
+                </div>
+
+                <div class="info">
+                    <span>Mode de paiement</span>
+                    <strong>{{ commande.get_moyen_paiement_display }}</strong>
+                </div>
+
+                <div class="info">
+                    <span>Statut</span>
+                    <strong class="statut">{{ commande.get_statut_display }}</strong>
+                </div>
+
+            </div>
+
+            <hr>
+
+            <h3>Articles commandés</h3>
+
+            {% for ligne in commande.lignes.all %}
+
+            <div class="article">
+
+                <div class="article-info">
+                    <strong>{{ ligne.article.nom }}</strong>
+                    <p>Quantité : {{ ligne.quantite }}</p>
+                </div>
+
+                <strong class="prix-article">
+                    {{ ligne.sous_total }} FCFA
+                </strong>
+
+            </div>
+
+            {% endfor %}
+
+            <div class="total">
+                <span>Total à payer</span>
+                <strong>{{ commande.montant_total }} FCFA</strong>
+            </div>
+
+        </div>
+
+        <a href="{% url 'boutique' %}" class="bouton">
+            Continuer mes achats →
+        </a>
+
+        <footer class="confirmation-footer">
+            <p>© 2026 BNM COLLECTION</p>
+            <span>L'élégance dans la simplicité.</span>
+        </footer>
+
+    </main>
+
+</body>
+</html>

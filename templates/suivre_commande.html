@@ -1,0 +1,130 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Suivre ma commande | BNM COLLECTION</title>
+
+    <link rel="stylesheet" href="{% static 'css/suivre_commande.css' %}">
+</head>
+
+<body class="page-suivi">
+
+    <header class="header">
+        <a href="{% url 'accueil' %}" class="logo">
+            BNM <span>COLLECTION</span>
+        </a>
+
+        <nav>
+            <a href="{% url 'accueil' %}">Accueil</a>
+            <a href="{% url 'boutique' %}">Boutique</a>
+            <a href="{% url 'suivre_commande' %}">Suivre ma commande</a>
+            <a href="{% url 'panier' %}">Mon panier</a>
+            <a href="{% url 'contact' %}">Contact</a>
+        </nav>
+    </header>
+
+    <main class="suivi-container">
+
+        <div class="suivi-card">
+
+            <div class="icone">📦</div>
+
+            <h1>Suivre ma commande</h1>
+
+            <p class="description">
+                Retrouvez l'état de votre commande BNM COLLECTION
+                en renseignant les informations ci-dessous.
+            </p>
+
+            <form method="POST">
+                {% csrf_token %}
+
+                <div class="form-group">
+                    <label for="numero_commande">Numéro de commande</label>
+                    <input
+                        type="number"
+                        id="numero_commande"
+                        name="numero_commande"
+                        placeholder="Exemple : 12"
+                        min="1"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="telephone">Numéro de téléphone</label>
+                    <input
+                        type="tel"
+                        id="telephone"
+                        name="telephone"
+                        placeholder="Le numéro utilisé lors de la commande"
+                        required
+                    >
+                </div>
+
+                <button type="submit">
+                    Rechercher ma commande
+                </button>
+            </form>
+
+            {% if erreur %}
+                <div class="erreur">
+                    {{ erreur }}
+                </div>
+            {% endif %}
+
+            {% if commande %}
+                <div class="resultat">
+
+                    <h2>Votre commande #{{ commande.id }}</h2>
+
+                    <p>
+                        <strong>Date :</strong>
+                        {{ commande.date_commande|date:"d/m/Y à H:i" }}
+                    </p>
+
+                    <p>
+                        <strong>Client :</strong>
+                        {{ commande.nom_client }}
+                    </p>
+
+                    <p>
+                        <strong>Montant :</strong>
+                        {{ commande.montant_total }} FCFA
+                    </p>
+
+                    <div class="statut">
+                        <span>État de votre commande</span>
+                        <strong>{{ commande.get_statut_display }}</strong>
+                    </div>
+
+                    <h3>Articles commandés</h3>
+
+                    {% for ligne in commande.lignes.all %}
+                        <p>
+                            {{ ligne.article.nom }}
+                            × {{ ligne.quantite }}
+                        </p>
+                    {% endfor %}
+
+                </div>
+            {% endif %}
+
+            <a href="{% url 'boutique' %}" class="retour">
+                ← Retour à la boutique
+            </a>
+
+        </div>
+
+    </main>
+
+    <footer>
+        © 2026 BNM COLLECTION — Tous droits réservés.
+    </footer>
+
+</body>
+</html>

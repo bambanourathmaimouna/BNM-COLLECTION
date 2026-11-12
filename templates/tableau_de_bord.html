@@ -1,0 +1,216 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Tableau de bord | BNM COLLECTION</title>
+
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+</head>
+
+<body>
+
+<div class="dashboard">
+
+    <aside class="sidebar">
+
+        <div class="logo">
+            BNM <span>COLLECTION</span>
+        </div>
+
+        <p class="menu-title">MENU PRINCIPAL</p>
+
+        <nav>
+            <a href="{% url 'tableau_de_bord' %}" class="active">
+                Tableau de bord
+            </a>
+
+            <a href="{% url 'boutique' %}">
+                Voir la boutique
+            </a>
+
+            <a href="{% url 'panier' %}">
+                Voir le panier
+            </a>
+
+            <a href="/admin/">
+                Administration
+            </a>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <a href="/admin/logout/">Déconnexion</a>
+        </div>
+
+    </aside>
+
+
+    <main class="main-content">
+
+        <header class="topbar">
+            <div>
+                <h1>Tableau de bord</h1>
+                <p>Bienvenue dans votre espace de gestion.</p>
+            </div>
+
+            <div class="admin-info">
+                Administratrice
+            </div>
+        </header>
+
+
+        <section class="statistics">
+
+            <div class="stat-card">
+                <div class="stat-icon">FCFA</div>
+                <p>Chiffre d'affaires</p>
+                <h2>{{ chiffre_affaires|floatformat:0 }} FCFA</h2>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">CMD</div>
+                <p>Total des commandes</p>
+                <h2>{{ nombre_commandes }}</h2>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">!</div>
+                <p>En attente</p>
+                <h2>{{ commandes_attente }}</h2>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">✓</div>
+                <p>Commandes livrées</p>
+                <h2>{{ commandes_livrees }}</h2>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">PRD</div>
+                <p>Produits disponibles</p>
+                <h2>{{ nombre_produits }}</h2>
+            </div>
+
+        </section>
+
+
+        <section class="orders-section">
+
+            <div class="section-header">
+                <div>
+                    <h2>Dernières commandes</h2>
+
+                     <form method="GET" class="filtres-commandes">
+
+                        <input
+                            type="text"
+                            name="recherche"
+                            placeholder="Rechercher un client ou un téléphone"
+                            value="{{ recherche }}"
+                        >
+
+                        <select name="statut">
+                            <option value="">Tous les statuts</option>
+
+                            {% for valeur, libelle in statuts %}
+                                <option value="{{ valeur }}"
+                                    {% if statut_selectionne == valeur %}selected{% endif %}>
+                                    {{ libelle }}
+                                </option>
+                            {% endfor %}
+                        </select>
+
+                        <button type="submit">Rechercher</button>
+
+                        <a href="{% url 'tableau_de_bord' %}" class="btn-reset">
+                            Réinitialiser
+                        </a>
+
+                    </form>
+
+                    <p>Suivez les achats de vos clientes.</p>
+                </div>
+            </div>
+
+            <div class="table-container">
+
+                <table>
+
+                    <thead>
+                        <tr>
+                            <th>N°</th>
+                            <th>Cliente</th>
+                            <th>Téléphone</th>
+                            <th>Montant</th>
+                            <th>Paiement</th>
+                            <th>Statut</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        {% for commande in dernieres_commandes %}
+
+                        <tr>
+                            <td>
+                                <a href="{% url 'detail_commande' commande.id %}" class="commande-link">
+                                    #{{ commande.id }}
+                                </a>
+                            </td>
+                            
+                            <td>{{ commande.nom_client }}</td>
+
+                            <td>{{ commande.telephone }}</td>
+
+                            <td>
+                                {{ commande.montant_total|floatformat:0 }} FCFA
+                            </td>
+
+                            <td>
+                                {{ commande.get_moyen_paiement_display }}
+                            </td>
+
+                            <td>
+                                <span class="status {{ commande.statut }}">
+                                    {{ commande.get_statut_display }}
+                                </span>
+                            </td>
+
+                            <td>
+                                {{ commande.date_commande|date:"d/m/Y" }}
+                            </td>
+                        </tr>
+
+                        {% empty %}
+
+                        <tr>
+                            <td colspan="7" class="empty">
+                                Aucune commande enregistrée pour le moment.
+                            </td>
+                        </tr>
+
+                        {% endfor %}
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+        <footer>
+            © 2026 BNM COLLECTION — L'élégance au quotidien.
+        </footer>
+
+    </main>
+
+</div>
+
+</body>
+</html>

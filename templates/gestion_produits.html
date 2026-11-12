@@ -1,0 +1,113 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion des produits | BNM COLLECTION</title>
+    <link rel="stylesheet" href="{% static 'css/gestion_produits.css' %}">
+</head>
+<body>
+
+<header class="header">
+    <h1>BNM COLLECTION</h1>
+    <a href="{% url 'tableau_de_bord' %}">Retour au tableau de bord</a>
+</header>
+
+<main class="container">
+
+    <div class="titre-section">
+        <div>
+            <h2>Gestion des produits</h2>
+            <p>Ajoutez, modifiez et gérez votre stock.</p>
+        </div>
+
+        <a href="{% url 'ajouter_produit' %}" class="btn-ajouter">
+            + Ajouter un produit
+        </a>
+    </div>
+
+    {% if messages %}
+        {% for message in messages %}
+            <div class="message">{{ message }}</div>
+        {% endfor %}
+    {% endif %}
+
+    {% if produits_stock_faible %}
+        <section class="alerte-stock">
+            <h3>⚠️ Attention : stock faible</h3>
+            {% for article in produits_stock_faible %}
+                <p>
+                    {{ article.nom }} :
+                    <strong>{{ article.stock }} restant(s)</strong>
+                </p>
+            {% endfor %}
+        </section>
+    {% endif %}
+
+    <section class="table-container">
+        <h3>Tous les produits</h3>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Photo</th>
+                    <th>Produit</th>
+                    <th>Catégorie</th>
+                    <th>Prix</th>
+                    <th>Stock</th>
+                    <th>Disponibilité</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for article in articles %}
+                <tr>
+                    <td>
+                        {% if article.image %}
+                            <img src="{{ article.image.url }}" alt="{{ article.nom }}">
+                        {% else %}
+                            Aucune photo
+                        {% endif %}
+                    </td>
+
+                    <td>{{ article.nom }}</td>
+                    <td>{{ article.get_categorie_display }}</td>
+                    <td>{{ article.prix }} FCFA</td>
+
+                    <td>
+                        {% if article.stock <= 5 %}
+                            <span class="stock-faible">{{ article.stock }}</span>
+                        {% else %}
+                            {{ article.stock }}
+                        {% endif %}
+                    </td>
+
+                    <td>
+                        {% if article.disponible %}
+                            <span class="disponible">Disponible</span>
+                        {% else %}
+                            <span class="indisponible">Indisponible</span>
+                        {% endif %}
+                    </td>
+
+                    <td class="actions">
+                        <a href="{% url 'modifier_produit' article.id %}">Modifier</a>
+                        <a href="{% url 'supprimer_produit' article.id %}" class="supprimer">
+                            Supprimer
+                        </a>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="7">Aucun produit enregistré.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </section>
+
+</main>
+</body>
+</html>

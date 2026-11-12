@@ -1,0 +1,244 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body.page-suivi {
+    font-family: 'Segoe UI', sans-serif;
+    background: #f8f4ee;
+    color: #49372d;
+    min-height: 100vh;
+}
+
+/* HEADER */
+
+.page-suivi .header {
+    background: #fff;
+    padding: 22px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 12px rgba(70, 45, 30, 0.06);
+}
+
+.page-suivi .logo {
+    color: #704b38;
+    font-size: 25px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.page-suivi .logo span {
+    display: block;
+    font-size: 11px;
+    letter-spacing: 5px;
+    color: #b08b65;
+}
+
+.page-suivi nav {
+    display: flex;
+    gap: 25px;
+}
+
+.page-suivi nav a {
+    color: #5c4638;
+    text-decoration: none;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.page-suivi nav a:hover {
+    color: #b08b65;
+}
+
+/* CONTENU */
+
+.page-suivi .suivi-container {
+    min-height: 75vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 20px;
+}
+
+.page-suivi .suivi-card {
+    width: 100%;
+    max-width: 550px;
+    background: #fff;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 35px rgba(80, 55, 35, 0.08);
+}
+
+.page-suivi .icone {
+    width: 65px;
+    height: 65px;
+    background: #f2e6d8;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    margin: 0 auto 20px;
+}
+
+.page-suivi h1 {
+    text-align: center;
+    color: #704b38;
+    font-size: 27px;
+    margin-bottom: 12px;
+}
+
+.page-suivi .description {
+    text-align: center;
+    color: #88796e;
+    line-height: 1.7;
+    font-size: 14px;
+    margin-bottom: 30px;
+}
+
+/* FORMULAIRE */
+
+.page-suivi .form-group {
+    margin-bottom: 20px;
+}
+
+.page-suivi label {
+    display: block;
+    font-weight: 600;
+    font-size: 14px;
+    margin-bottom: 9px;
+}
+
+.page-suivi input {
+    width: 100%;
+    padding: 14px;
+    border: 1px solid #e4d8cb;
+    border-radius: 7px;
+    outline: none;
+    font-size: 14px;
+    background: #fdfbf8;
+}
+
+.page-suivi input:focus {
+    border-color: #a77b58;
+    box-shadow: 0 0 0 3px rgba(167, 123, 88, 0.1);
+}
+
+.page-suivi button {
+    width: 100%;
+    padding: 15px;
+    background: #704b38;
+    color: white;
+    border: none;
+    border-radius: 7px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.page-suivi button:hover {
+    background: #9a7052;
+}
+
+/* ERREUR */
+
+.page-suivi .erreur {
+    background: #fff0ed;
+    color: #b33a2b;
+    padding: 13px;
+    border-radius: 7px;
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+/* RESULTAT */
+
+.page-suivi .resultat {
+    margin-top: 30px;
+    padding: 22px;
+    background: #faf6f0;
+    border: 1px solid #eadccc;
+    border-radius: 10px;
+}
+
+.page-suivi .resultat h2 {
+    color: #704b38;
+    margin-bottom: 18px;
+    font-size: 21px;
+}
+
+.page-suivi .resultat p {
+    margin-bottom: 12px;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.page-suivi .resultat h3 {
+    margin: 20px 0 12px;
+    color: #704b38;
+}
+
+.page-suivi .statut {
+    margin: 20px 0;
+    padding: 16px;
+    background: #efe4d7;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.page-suivi .statut strong {
+    color: #704b38;
+    font-size: 18px;
+}
+
+/* RETOUR */
+
+.page-suivi .retour {
+    display: block;
+    text-align: center;
+    margin-top: 25px;
+    color: #96704f;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.page-suivi .retour:hover {
+    text-decoration: underline;
+}
+
+/* FOOTER */
+
+.page-suivi footer {
+    text-align: center;
+    padding: 20px;
+    color: #8c7a6c;
+    font-size: 13px;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 650px) {
+    .page-suivi .header {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .page-suivi nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .page-suivi .suivi-card {
+        padding: 25px 20px;
+    }
+
+    .page-suivi h1 {
+        font-size: 23px;
+    }
+}

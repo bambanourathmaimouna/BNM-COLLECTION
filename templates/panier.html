@@ -1,0 +1,153 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Mon panier | BNM COLLECTION</title>
+
+    <link rel="stylesheet" href="{% static 'css/panier.css' %}">
+</head>
+
+<body class="page-panier">
+
+    <header class="navbar">
+        <a href="{% url 'accueil' %}" class="logo">
+            BNM <span>COLLECTION</span>
+        </a>
+
+        <nav>
+            <a href="{% url 'accueil' %}">Accueil</a>
+            <a href="{% url 'boutique' %}">Boutique</a>
+            <a href="{% url 'suivre_commande' %}">Suivre ma commande</a>
+            <a href="{% url 'apropos' %}">À propos</a>
+            <a href="{% url 'contact' %}">Contact</a>
+            <a href="{% url 'panier' %}" class="active">Mon panier</a>
+        </nav>
+    </header>
+
+    <main class="container">
+
+        <div class="page-title">
+            <h1>Mon panier</h1>
+            <p>Retrouvez les articles que vous avez sélectionnés.</p>
+        </div>
+
+        {% if articles_panier %}
+
+        <div class="cart-layout">
+
+            <section class="cart-items">
+
+                {% for ligne in articles_panier %}
+
+                <article class="cart-item">
+
+                    <img
+                        src="{{ ligne.article.image.url }}"
+                        alt="{{ ligne.article.nom }}"
+                    >
+
+                    <div class="item-info">
+
+                        <h2>{{ ligne.article.nom }}</h2>
+
+                        <p class="category">
+                            {{ ligne.article.get_categorie_display }}
+                        </p>
+
+                        <p class="price">
+                            {{ ligne.article.prix }} FCFA
+                        </p>
+
+                        <p class="quantity">
+                            Quantité : {{ ligne.quantite }}
+                        </p>
+
+                        <form
+                            action="{% url 'retirer_du_panier' ligne.article.id %}"
+                            method="POST"
+                        >
+                            {% csrf_token %}
+
+                            <button type="submit" class="remove-btn">
+                                Retirer
+                            </button>
+                        </form>
+
+                    </div>
+
+                    <div class="subtotal">
+                        {{ ligne.sous_total }} FCFA
+                    </div>
+
+                </article>
+
+                {% endfor %}
+
+            </section>
+
+            <aside class="cart-summary">
+
+                <h2>Résumé de la commande</h2>
+
+                <div class="summary-line">
+                    <span>Sous-total</span>
+                    <strong>{{ total }} FCFA</strong>
+                </div>
+
+                <div class="summary-line">
+                    <span>Livraison</span>
+                    <span>À déterminer</span>
+                </div>
+
+                <hr>
+
+                <div class="total-line">
+                    <span>Total</span>
+                    <strong>{{ total }} FCFA</strong>
+                </div>
+
+                <a href="{% url 'passer_commande' %}" class="checkout-btn">
+                    Passer la commande
+                </a>
+
+                <a href="{% url 'boutique' %}" class="continue-link">
+                    Continuer mes achats
+                </a>
+
+            </aside>
+
+        </div>
+
+        {% else %}
+
+        <div class="empty-cart">
+
+            <div class="empty-icon">🛍️</div>
+
+            <h2>Votre panier est vide</h2>
+
+            <p>
+                Découvrez notre collection et trouvez vos prochains coups de cœur.
+            </p>
+
+            <a href="{% url 'boutique' %}" class="shop-btn">
+                Découvrir la boutique
+            </a>
+
+        </div>
+
+        {% endif %}
+
+    </main>
+
+    <footer>
+        <p>© 2026 BNM COLLECTION — L'élégance dans la simplicité.</p>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,180 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Finaliser ma commande | BNM COLLECTION</title>
+
+    <link rel="stylesheet" href="{% static 'css/commande.css' %}">
+</head>
+
+<body class="page-commande">
+
+    <!-- HEADER -->
+    <header class="commande-header">
+
+        <a href="{% url 'accueil' %}" class="logo">
+            BNM <span>COLLECTION</span>
+        </a>
+
+        <nav>
+            <a href="{% url 'accueil' %}">Accueil</a>
+            <a href="{% url 'boutique' %}">Boutique</a>
+            <a href="{% url 'suivre_commande' %}">Suivre ma commande</a>
+            <a href="{% url 'apropos' %}">À propos</a>
+            <a href="{% url 'contact' %}">Contact</a>
+            <a href="{% url 'panier' %}">Mon panier</a>
+        </nav>
+
+    </header>
+
+    <!-- CONTENU -->
+    <main class="commande-container">
+
+        <div class="commande-heading">
+            <span class="sous-titre">BNM COLLECTION</span>
+
+            <h1>Finaliser ma commande</h1>
+
+            <p>
+                Encore quelques informations pour recevoir vos articles.
+            </p>
+        </div>
+
+        <div class="commande-card">
+
+            <h2>Informations de livraison</h2>
+
+            <p class="form-description">
+                Veuillez renseigner vos coordonnées correctement.
+            </p>
+
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="message">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+
+            <form method="POST">
+
+                {% csrf_token %}
+
+                <div class="form-group">
+                    <label for="nom">Nom complet *</label>
+
+                    <input
+                        type="text"
+                        id="nom"
+                        name="nom"
+                        placeholder="Votre nom complet"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="telephone">Numéro de téléphone *</label>
+
+                    <input
+                        type="tel"
+                        id="telephone"
+                        name="telephone"
+                        placeholder="Ex : 0700000000"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Adresse e-mail</label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="Votre adresse e-mail"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="adresse">Adresse de livraison *</label>
+
+                    <textarea
+                        id="adresse"
+                        name="adresse"
+                        placeholder="Votre adresse complète"
+                        required
+                    ></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="ville">Ville / Commune *</label>
+
+                    <input
+                        type="text"
+                        id="ville"
+                        name="ville"
+                        placeholder="Ex : Cocody, Abidjan"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="moyen_paiement">Mode de paiement *</label>
+
+                    <select
+                        id="moyen_paiement"
+                        name="moyen_paiement"
+                        required
+                    >
+                        <option value="livraison">
+                            Paiement à la livraison
+                        </option>
+
+                        <option value="orange_money">
+                            Orange Money
+                        </option>
+
+                        <option value="wave">
+                            Wave
+                        </option>
+
+                        <option value="mtn_money">
+                            MTN Money
+                        </option>
+
+                        <option value="moov_money">
+                            Moov Money
+                        </option>
+                    </select>
+                </div>
+
+                <button type="submit" class="submit-btn">
+                    CONFIRMER MA COMMANDE
+                </button>
+
+            </form>
+
+            <a href="{% url 'panier' %}" class="retour">
+                ← Retour au panier
+            </a>
+
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="commande-footer">
+
+        <p>© 2026 BNM COLLECTION</p>
+
+        <span>L'élégance dans la simplicité.</span>
+
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ titre }} | BNM COLLECTION</title>
+    <link rel="stylesheet" href="{% static 'css/gestion_produits.css' %}">
+</head>
+<body>
+
+<header class="header">
+    <h1>BNM COLLECTION</h1>
+    <a href="{% url 'gestion_produits' %}">Retour aux produits</a>
+</header>
+
+<main class="form-container">
+    <h2>{{ titre }}</h2>
+
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        {% for field in form %}
+            <div class="form-group">
+                <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                {{ field }}
+
+                {% if field.errors %}
+                    <div class="erreur">{{ field.errors }}</div>
+                {% endif %}
+            </div>
+        {% endfor %}
+
+        <button type="submit" class="btn-ajouter">Enregistrer le produit</button>
+    </form>
+</main>
+
+</body>
+</html>

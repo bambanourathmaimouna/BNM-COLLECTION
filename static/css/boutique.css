@@ -1,0 +1,371 @@
+/* =====================================
+   BNM COLLECTION - PAGE BOUTIQUE
+===================================== */
+
+.page-boutique {
+    font-family: Arial, sans-serif;
+    background: #faf8f5;
+    color: #403126;
+}
+
+/* NAVIGATION */
+
+.page-boutique .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 22px 7%;
+    background: #fff;
+    border-bottom: 1px solid #eee5dc;
+}
+
+.page-boutique .logo {
+    font-family: Georgia, serif;
+    font-size: 25px;
+    font-weight: bold;
+    color: #75543d;
+}
+
+.page-boutique .logo span {
+    display: block;
+    font-family: Arial, sans-serif;
+    font-size: 10px;
+    letter-spacing: 4px;
+    text-align: center;
+}
+
+.page-boutique nav {
+    display: flex;
+    gap: 30px;
+}
+
+.page-boutique nav a {
+    color: #403126;
+    text-decoration: none;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.page-boutique nav a:hover {
+    color: #a47b52;
+}
+
+.page-boutique .panier {
+    background: #75543d;
+    color: white;
+    padding: 12px 22px;
+    border-radius: 4px;
+    text-decoration: none;
+}
+
+/* EN-TÊTE BOUTIQUE */
+
+.boutique-header {
+    text-align: center;
+    padding: 85px 20px;
+    background: #eee5da;
+}
+
+.boutique-header .sous-titre {
+    color: #a47b52;
+    font-size: 12px;
+    letter-spacing: 5px;
+    margin-bottom: 18px;
+}
+
+.boutique-header h1 {
+    font-family: Georgia, serif;
+    font-size: 48px;
+    font-weight: normal;
+    margin-bottom: 18px;
+    color: #403126;
+}
+
+.boutique-header p {
+    line-height: 1.8;
+    color: #75665a;
+}
+
+/* CONTENU */
+
+.boutique-container {
+    max-width: 1400px;
+    margin: auto;
+    padding: 50px 6%;
+}
+
+/* FILTRES */
+
+.filtres-boutique {
+    margin-bottom: 45px;
+}
+
+.filtres-boutique form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+}
+
+.filtres-boutique input,
+.filtres-boutique select {
+    flex: 1;
+    min-width: 180px;
+    padding: 14px;
+    border: 1px solid #e4d9ce;
+    border-radius: 4px;
+    background: white;
+    color: #403126;
+    font-size: 14px;
+    outline: none;
+}
+
+.filtres-boutique input:focus,
+.filtres-boutique select:focus {
+    border-color: #a47b52;
+}
+
+.filtres-boutique button {
+    padding: 14px 25px;
+    border: none;
+    border-radius: 4px;
+    background: #75543d;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.filtres-boutique button:hover {
+    background: #503925;
+}
+
+.filtres-boutique a {
+    color: #8a6748;
+    text-decoration: none;
+    padding: 10px;
+}
+
+/* GRILLE DES ARTICLES */
+
+.articles-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 30px;
+}
+
+/* CARTE PRODUIT */
+
+.article-card {
+    background: white;
+    border: 1px solid #eee7df;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.article-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(64, 49, 38, 0.09);
+}
+
+.article-card > a:first-child {
+    display: block;
+    overflow: hidden;
+    background: #eee7df;
+}
+
+.article-image {
+    display: block;
+    width: 100%;
+    height: 340px;
+    object-fit: cover;
+    transition: transform 0.4s;
+}
+
+.article-card:hover .article-image {
+    transform: scale(1.04);
+}
+
+/* INFORMATIONS PRODUIT */
+
+.article-infos {
+    padding: 22px;
+}
+
+.article-categorie {
+    display: inline-block;
+    color: #a47b52;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+.article-infos h3 {
+    font-family: Georgia, serif;
+    font-size: 22px;
+    font-weight: normal;
+    margin-bottom: 12px;
+    color: #403126;
+}
+
+.article-infos p {
+    color: #81756b;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.article-prix {
+    margin: 18px 0;
+    font-size: 20px !important;
+    font-weight: bold;
+    color: #75543d !important;
+}
+
+/* STOCK */
+
+.statut-stock {
+    display: inline-block;
+    margin: 8px 0 15px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.disponible {
+    color: #347a45;
+}
+
+.rupture {
+    color: #b23b3b;
+}
+
+/* BOUTONS */
+
+.article-infos form {
+    margin-bottom: 10px;
+}
+
+.bouton-detail {
+    display: block;
+    width: 100%;
+    padding: 13px;
+    margin-top: 10px;
+    background: #75543d;
+    color: white;
+    border: 1px solid #75543d;
+    text-align: center;
+    text-decoration: none;
+    font-size: 13px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.bouton-detail:hover {
+    background: #503925;
+    border-color: #503925;
+}
+
+.bouton-indisponible {
+    display: block;
+    width: 100%;
+    padding: 13px;
+    margin: 10px 0;
+    background: #ddd;
+    color: #777;
+    border: none;
+    cursor: not-allowed;
+}
+
+/* BOUTIQUE VIDE */
+
+.boutique-vide {
+    text-align: center;
+    padding: 80px 20px;
+    background: white;
+}
+
+.boutique-vide h2 {
+    font-family: Georgia, serif;
+    font-size: 30px;
+    margin-bottom: 18px;
+    color: #75543d;
+}
+
+.boutique-vide p {
+    color: #81756b;
+    line-height: 1.8;
+}
+
+.boutique-vide a {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 13px 25px;
+    background: #75543d;
+    color: white;
+    text-decoration: none;
+}
+
+/* FOOTER */
+
+.page-boutique footer {
+    background: #403126;
+    color: white;
+    text-align: center;
+    padding: 40px 20px;
+    line-height: 2;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 900px) {
+    .articles-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .article-image {
+        height: 300px;
+    }
+}
+
+@media (max-width: 650px) {
+    .page-boutique .navbar {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .page-boutique nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 18px;
+    }
+
+    .boutique-header {
+        padding: 60px 20px;
+    }
+
+    .boutique-header h1 {
+        font-size: 36px;
+    }
+
+    .boutique-container {
+        padding: 35px 18px;
+    }
+
+    .filtres-boutique form {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .filtres-boutique input,
+    .filtres-boutique select {
+        width: 100%;
+    }
+
+    .articles-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    .article-image {
+        height: 380px;
+    }
+}

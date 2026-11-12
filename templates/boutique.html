@@ -1,0 +1,182 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Boutique | BNM COLLECTION</title>
+
+    <link rel="stylesheet" href="{% static 'css/boutique.css' %}">
+</head>
+
+<body class="page-boutique">
+
+    <header class="navbar">
+        <div class="logo">
+            BNM <span>COLLECTION</span>
+        </div>
+
+        <nav>
+            <a href="{% url 'accueil' %}">Accueil</a>
+            <a href="{% url 'boutique' %}">Boutique</a>
+            <a href="{% url 'suivre_commande' %}">Suivre ma commande</a>
+            <a href="{% url 'apropos' %}">À propos</a>
+            <a href="{% url 'contact' %}">Contact</a>
+        </nav>
+
+        <a href="{% url 'panier' %}" class="panier">Mon panier</a>
+    </header>
+
+    <section class="boutique-header">
+        <p class="sous-titre">BNM COLLECTION</p>
+        <h1>Notre boutique</h1>
+        <p>Découvrez nos collections de vêtements modestes et élégants.</p>
+    </section>
+
+    <main class="boutique-container">
+
+        <!-- RECHERCHE ET FILTRES -->
+        <section class="filtres-boutique">
+            <form method="GET">
+
+                <input
+                    type="text"
+                    name="recherche"
+                    placeholder="Rechercher un vêtement..."
+                    value="{{ recherche }}"
+                >
+
+                <select name="categorie">
+                    <option value="">Toutes les catégories</option>
+
+                    {% for valeur, libelle in categories %}
+                        <option value="{{ valeur }}"
+                            {% if categorie_selectionnee == valeur %}selected{% endif %}>
+                            {{ libelle }}
+                        </option>
+                    {% endfor %}
+                </select>
+
+                <input
+                    type="number"
+                    name="prix_max"
+                    min="0"
+                    placeholder="Prix maximum (FCFA)"
+                    value="{{ prix_max }}"
+                >
+
+                <button type="submit">Filtrer</button>
+
+                <a href="{% url 'boutique' %}">Réinitialiser</a>
+
+            </form>
+        </section>
+
+        <!-- LISTE DES ARTICLES -->
+        {% if articles %}
+
+            <div class="articles-grid">
+
+                {% for article in articles %}
+
+                    <div class="article-card">
+
+                        <a href="{% url 'detail_article' article.id %}">
+                            {% if article.image %}
+                                <img
+                                    src="{{ article.image.url }}"
+                                    alt="{{ article.nom }}"
+                                    class="article-image"
+                                >
+                            {% endif %}
+                        </a>
+
+                        <div class="article-infos">
+
+                            <span class="article-categorie">
+                                {{ article.get_categorie_display }}
+                            </span>
+
+                            <h3>{{ article.nom }}</h3>
+
+                            <p>
+                                {{ article.description|truncatewords:15 }}
+                            </p>
+
+                            <p class="article-prix">
+                                {{ article.prix }} FCFA
+                            </p>
+
+                            {% if article.stock > 0 %}
+
+                                <span class="statut-stock disponible">
+                                    ✓ En stock : {{ article.stock }}
+                                </span>
+
+                                <form
+                                    action="{% url 'ajouter_au_panier' article.id %}"
+                                    method="POST"
+                                >
+                                    {% csrf_token %}
+
+                                    <button type="submit" class="bouton-detail">
+                                        Ajouter au panier
+                                    </button>
+                                </form>
+
+                            {% else %}
+
+                                <span class="statut-stock rupture">
+                                    Rupture de stock
+                                </span>
+
+                                <button type="button" disabled class="bouton-indisponible">
+                                    Indisponible
+                                </button>
+
+                            {% endif %}
+
+                            <a
+                                href="{% url 'detail_article' article.id %}"
+                                class="bouton-detail"
+                            >
+                                Voir le produit
+                            </a>
+
+                        </div>
+                    </div>
+
+                {% endfor %}
+
+            </div>
+
+        {% else %}
+
+            <div class="boutique-vide">
+
+                {% if recherche or categorie_selectionnee or prix_max %}
+                    <h2>Aucun produit trouvé</h2>
+                    <p>Essaie une autre recherche ou modifie tes filtres.</p>
+                {% else %}
+                    <h2>Notre boutique se prépare</h2>
+                    <p>Nos nouvelles collections arrivent bientôt.</p>
+                {% endif %}
+
+                <a href="{% url 'boutique' %}">Voir tous les produits</a>
+
+            </div>
+
+        {% endif %}
+
+    </main>
+
+    <footer id="contact">
+        <h3>BNM COLLECTION</h3>
+        <p>L'élégance dans chaque détail.</p>
+        <p>© 2026 BNM COLLECTION</p>
+    </footer>
+
+</body>
+</html>

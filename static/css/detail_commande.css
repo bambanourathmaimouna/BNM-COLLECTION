@@ -1,0 +1,164 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f7f6f3;
+    color: #302b27;
+}
+
+.container {
+    max-width: 850px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+header h1 {
+    letter-spacing: 3px;
+}
+
+header span {
+    color: #a47b52;
+}
+
+header p {
+    margin-top: 10px;
+    color: #888;
+}
+
+.retour {
+    display: inline-block;
+    margin-bottom: 20px;
+    color: #a47b52;
+    text-decoration: none;
+}
+
+.card {
+    background: white;
+    padding: 35px;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.04);
+}
+
+.card h2 {
+    margin-bottom: 30px;
+}
+
+.card h3 {
+    margin: 25px 0 20px;
+}
+
+.info {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    margin-bottom: 17px;
+    font-size: 14px;
+}
+
+.info span {
+    color: #888;
+}
+
+.info strong {
+    text-align: right;
+}
+
+.article {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    padding: 18px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.article p {
+    color: #888;
+    font-size: 13px;
+    margin-top: 7px;
+}
+
+.total {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 25px;
+    font-size: 18px;
+}
+
+.total strong {
+    color: #a47b52;
+}
+
+hr {
+    border: none;
+    border-top: 1px solid #eee;
+    margin: 25px 0;
+}
+
+select {
+    width: 100%;
+    padding: 14px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    background: white;
+    font-size: 15px;
+}
+
+button {
+    width: 100%;
+    margin-top: 18px;
+    padding: 15px;
+    background: #29231f;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+button:hover {
+    background: #a47b52;
+}
+
+.message {
+    padding: 13px;
+    background: #e4f3e8;
+    color: #31834b;
+    margin-bottom: 20px;
+    border-radius: 6px;
+}
+
+footer {
+    text-align: center;
+    margin-top: 35px;
+    color: #888;
+    font-size: 13px;
+    line-height: 2;
+}
+
+@media(max-width: 600px) {
+    .container {
+        margin: 10px auto;
+    }
+
+    .card {
+        padding: 20px;
+    }
+
+    .info {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .info strong {
+        text-align: left;
+    }
+}
