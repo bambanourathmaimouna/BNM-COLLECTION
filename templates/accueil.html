@@ -15,13 +15,14 @@
 
 <body>
 
+    <!-- BARRE DE NAVIGATION -->
     <header class="navbar">
 
         <div class="logo">
             BNM <span>COLLECTION</span>
         </div>
 
-       <nav>
+        <nav>
             <a href="{% url 'accueil' %}">Accueil</a>
             <a href="{% url 'boutique' %}">Boutique</a>
             <a href="{% url 'suivre_commande' %}">Suivre ma commande</a>
@@ -29,71 +30,90 @@
             <a href="{% url 'contact' %}">Contact</a>
         </nav>
 
-        <a href="{% url 'panier' %}" class="panier">Mon panier</a>
+        <a href="{% url 'panier' %}" class="panier">
+            Mon panier
+        </a>
 
     </header>
 
+
     <main>
 
+        <!-- SECTION PRINCIPALE -->
         <section class="hero">
+
             <div class="hero-content">
-                <p class="sous-titre">L'ÉLÉGANCE AU FÉMININ</p>
-                <h1>
-                    Révélez votre élégance
-                    avec BNM COLLECTION
-                </h1>
-                <p class="description">
-                    Découvrez notre univers de mode modeste,
-                    pensé pour les femmes et les petites filles.
-                    Élégance, douceur et raffinement.
+
+                <p class="sous-titre">
+                    L'ÉLÉGANCE AU FÉMININ
                 </p>
+
+                <h1>
+                    Révélez votre élégance avec BNM COLLECTION
+                </h1>
+
+                <p class="description">
+                    Découvrez notre univers de mode modeste, pensé pour
+                    les femmes et les petites filles. Élégance, douceur
+                    et raffinement.
+                </p>
+
                 <a href="#boutique" class="bouton">
                     Découvrir la collection
                 </a>
+
             </div>
+
         </section>
+
+
+        <!-- SECTION COLLECTIONS -->
         <section class="categories" id="boutique">
-            <p class="sous-titre">NOTRE UNIVERS</p>
-            <h2>Découvrez nos collections</h2>
-            <div class="categories-container">
-                <div class="categorie">
-                    <h3>Hijabs & Foulards</h3>
-                    <p>Élégance et douceur au quotidien.</p>
-                </div>
-                <div class="categorie">
-                    <h3>Abayas & Robes</h3>
-                    <p>La beauté de la mode modeste.</p>
-                </div>
-                <div class="categorie">
-                    <h3>Ensembles</h3>
-                    <p>Des tenues élégantes et confortables.</p>
-                </div>
-                <div class="categorie">
-                    <h3>Collection enfants</h3>
-                    <p>De jolies tenues pour les petites filles.</p>
-                </div>
-            </div>
-        </section>
-        <section class="apropos" id="apropos">
 
-            <h2>Bienvenue chez BNM COLLECTION</h2>
-
-            <p>
-                BNM COLLECTION vous propose un univers de mode
-                modeste associant élégance, qualité et raffinement.
-                Nous sélectionnons et confectionnons des vêtements
-                pour accompagner chaque femme dans son quotidien.
+            <p class="sous-titre">
+                NOTRE UNIVERS
             </p>
 
-        </section>
+            <h2>
+                Découvrez nos collections
+            </h2>
 
-    </main>
+            <div class="categories-container">
 
-    <footer id="contact">
-        <h3>BNM COLLECTION</h3>
-        <p>L'élégance dans chaque détail.</p>
-        <p>© 2026 BNM COLLECTION - Tous droits réservés.</p>
-    </footer>
+    <!-- IMAGE 1 : HIJABS ET FOULARDS -->
+    <a href="{% url 'boutique' %}" class="categorie categorie-hijabs">
+        <div class="categorie-contenu">
+            <h3>Hijabs & Foulards</h3>
+            <p>Élégance et douceur au quotidien.</p>
+            <span>Découvrir →</span>
+        </div>
+    </a>
 
-</body>
-</html>
+    <!-- IMAGE 2 : ABAYAS ET ROBES -->
+    <a href="{% url 'boutique' %}" class="categorie categorie-abayas">
+        <div class="categorie-contenu">
+            <h3>Abayas & Robes</h3>
+            <p>La beauté de la mode modeste.</p>
+            <span>Découvrir →</span>
+        </div>
+    </a>
+
+    <!-- IMAGE 3 : ENSEMBLES -->
+    <a href="{% url 'boutique' %}" class="categorie categorie-ensembles">
+        <div class="categorie-contenu">
+            <h3>Ensembles</h3>
+            <p>Des tenues élégantes et confortables.</p>
+            <span>Découvrir →</span>
+        </div>
+    </a>
+
+    <!-- IMAGE 4 : COLLECTION ENFANTS -->
+    <a href="{% url 'boutique' %}" class="categorie categorie-enfants">
+        <div class="categorie-contenu">
+            <h3>Collection enfants</h3>
+            <p>De jolies tenues pour les petites filles.</p>
+            <span>Découvrir →</span>
+        </div>
+    </a>
+
+</div>
