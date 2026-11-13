@@ -1,14 +1,26 @@
+/* ==============================
+   RÉINITIALISATION
+============================== */
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* ==============================
+   PAGE
+============================== */
+
 body {
     font-family: Arial, sans-serif;
     background: #faf8f5;
     color: #332820;
 }
+
+/* ==============================
+   NAVIGATION
+============================== */
 
 .navbar {
     background: white;
@@ -39,11 +51,19 @@ body {
     font-size: 14px;
 }
 
+/* ==============================
+   CONTENEUR
+============================== */
+
 .container {
     width: 90%;
     max-width: 700px;
     margin: 55px auto;
 }
+
+/* ==============================
+   TITRE
+============================== */
 
 .page-heading {
     text-align: center;
@@ -60,6 +80,10 @@ body {
     color: #8a8179;
     font-size: 14px;
 }
+
+/* ==============================
+   FORMULAIRE
+============================== */
 
 .checkout-card {
     background: white;
@@ -80,28 +104,57 @@ body {
     color: #514337;
 }
 
+/* Champs de saisie */
+
 .form-group input,
-.form-group textarea {
+.form-group textarea,
+.form-group select {
+    display: block;
     width: 100%;
     padding: 14px;
     border: 1px solid #e5ded7;
     border-radius: 6px;
     outline: none;
     font-size: 14px;
-    font-family: inherit;
+    font-family: Arial, sans-serif;
     background: #fdfcfb;
+    color: #332820;
 }
 
+/* Menu déroulant de paiement */
+
+.form-group select {
+    min-height: 48px;
+    cursor: pointer;
+    appearance: auto;
+}
+
+.form-group select option {
+    background: white;
+    color: #332820;
+}
+
+/* Effet au clic */
+
 .form-group input:focus,
-.form-group textarea:focus {
+.form-group textarea:focus,
+.form-group select:focus {
     border-color: #a47a52;
 }
 
+/* Zone de texte */
+
 .form-group textarea {
+    min-height: 110px;
     resize: vertical;
 }
 
+/* ==============================
+   BOUTON DE COMMANDE
+============================== */
+
 .submit-btn {
+    display: block;
     width: 100%;
     padding: 16px;
     background: #76543d;
@@ -118,6 +171,10 @@ body {
     background: #a47a52;
 }
 
+/* ==============================
+   MESSAGES
+============================== */
+
 .message {
     background: #fff0ed;
     color: #a33c32;
@@ -127,12 +184,36 @@ body {
     font-size: 14px;
 }
 
+/* ==============================
+   RETOUR AU PANIER
+============================== */
+
+.retour {
+    display: block;
+    margin-top: 25px;
+    text-align: center;
+    color: #a47a52;
+    text-decoration: none;
+}
+
+.retour:hover {
+    color: #76543d;
+}
+
+/* ==============================
+   PIED DE PAGE
+============================== */
+
 footer {
     text-align: center;
     padding: 25px;
     color: #999;
     font-size: 13px;
 }
+
+/* ==============================
+   RESPONSIVE MOBILE
+============================== */
 
 @media (max-width: 600px) {
 
@@ -141,6 +222,7 @@ footer {
     }
 
     .container {
+        width: 92%;
         margin: 35px auto;
     }
 
@@ -151,135 +233,15 @@ footer {
     .page-heading h1 {
         font-size: 25px;
     }
-}
 
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: Arial, sans-serif;
-    background: #f8f5f0;
-    color: #333;
-}
-
-.commande-container {
-    max-width: 750px;
-    margin: 50px auto;
-    padding: 20px;
-}
-
-header {
-    text-align: center;
-    margin-bottom: 35px;
-}
-
-header h1 {
-    font-size: 30px;
-    letter-spacing: 3px;
-    color: #29231f;
-}
-
-header h1 span {
-    color: #a47b52;
-}
-
-header p {
-    margin-top: 10px;
-    color: #777;
-}
-
-.commande-card {
-    background: white;
-    padding: 35px;
-    border-radius: 12px;
-    box-shadow: 0 5px 25px rgba(0,0,0,0.06);
-}
-
-.commande-card h2 {
-    margin-bottom: 25px;
-    color: #29231f;
-}
-
-.form-group {
-    margin-bottom: 20px;
-}
-
-.form-group label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: 600;
-}
-
-.form-group input,
-.form-group textarea {
-    width: 100%;
-    padding: 14px;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    font-size: 15px;
-    outline: none;
-}
-
-.form-group input:focus,
-.form-group textarea:focus {
-    border-color: #a47b52;
-}
-
-.form-group textarea {
-    height: 100px;
-    resize: vertical;
-}
-
-button {
-    width: 100%;
-    padding: 16px;
-    background: #29231f;
-    color: white;
-    border: none;
-    border-radius: 6px;
-    font-size: 15px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-button:hover {
-    background: #a47b52;
-}
-
-.retour {
-    display: block;
-    margin-top: 25px;
-    text-align: center;
-    color: #a47b52;
-    text-decoration: none;
-}
-
-.message {
-    padding: 12px;
-    margin-bottom: 20px;
-    background: #ffe5e5;
-    color: #a00000;
-    border-radius: 6px;
-}
-
-footer {
-    text-align: center;
-    margin-top: 30px;
-    color: #888;
-    font-size: 13px;
-}
-
-@media (max-width: 600px) {
-    .commande-container {
-        margin: 15px auto;
+    .logo {
+        font-size: 20px;
     }
 
-    .commande-card {
-        padding: 22px;
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+        padding: 13px;
+        font-size: 14px;
     }
 }
